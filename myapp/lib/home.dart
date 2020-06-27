@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './dataEntryBar.dart';
-import './rainbowContainer.dart';
+import './dataEntryContainer.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -40,12 +40,18 @@ class HomeState extends State<Home> {
        
       ),
       body: Container(
+        padding: EdgeInsets.all(10),
         height: size.height,
         width: size.width,
+        
         child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DataEntryBar(),
-            // RainbowContainer(),
+            //RainbowContainer(),
+            DataEntryContainer(size),
           ]
         )
       ),

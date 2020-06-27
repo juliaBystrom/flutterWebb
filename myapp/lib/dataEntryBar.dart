@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './dataEntryContainer.dart';
 
 class DataEntryBar extends StatefulWidget {
   @override
@@ -27,8 +28,8 @@ class _DataEntryBarState extends State<DataEntryBar> {
       ),
       child: Slider(
         min: 0,
-        max: 1000,
-        divisions: 1000,
+        max: 100,
+        divisions: 100,
         value: _valueSlider,
         label: "$_valueSlider",
         onChanged: (value) {
