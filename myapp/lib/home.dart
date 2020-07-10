@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './dataEntryBar.dart';
-import './dataEntryContainer.dart';
+import './dataEntryContainerTest.dart';
+
+
 
 class Home extends StatefulWidget {
   @override
@@ -40,18 +42,17 @@ class HomeState extends State<Home> {
        
       ),
       body: Container(
+        // TO DO shuld be same padding as the Rainbow sorter header
         padding: EdgeInsets.all(10),
         height: size.height,
         width: size.width,
-        
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DataEntryBar(),
-            //RainbowContainer(),
-            DataEntryContainer(size),
+            DataEntryContainerTest(),
           ]
         )
       ),
