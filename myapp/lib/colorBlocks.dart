@@ -10,10 +10,10 @@ class ColorBlocks {
   ColorBlocks() {
     // Starting with 10 color blocks
     nrOfBlocks = 10;
-    colorBlocks = generateColorBlocks(10);
+    generateColorBlocks(10);
   }
 
-  List<Flexible> generateColorBlocks(int nrOfBlocks) {
+  void generateColorBlocks(int nrOfBlocks) {
     // colorBlocks = new List(nrOfBlocks);
     List<Flexible> cB = new List(nrOfBlocks);
 
@@ -40,7 +40,7 @@ class ColorBlocks {
       );
     }
 
-    return cB;
+    colorBlocks = cB;
   }
 
 

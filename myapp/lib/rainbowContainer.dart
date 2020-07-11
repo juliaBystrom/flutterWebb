@@ -1,21 +1,40 @@
 import 'package:flutter/material.dart';
 import './colorBlocks.dart';
 
-class DataEntryContainerTest extends StatefulWidget {
+class RainbowContainer extends StatefulWidget {
+  // int dataEntrys;
+  // RainbowContainer(this.dataEntrys);
+  Function getNrofDataEntrys;
+  RainbowContainer(this.getNrofDataEntrys);
+
   @override
-  _DataEntryContainerTestState createState() {
-    return _DataEntryContainerTestState();
+  RainbowContainerState createState() {
+    return RainbowContainerState(getNrofDataEntrys);
   }
+
 }
 
-class _DataEntryContainerTestState extends State<DataEntryContainerTest> {
+class RainbowContainerState extends State<RainbowContainer> {
+  Function getNrofDataEntrys;
+  RainbowContainerState(this.getNrofDataEntrys);
   ColorBlocks cblocks = new ColorBlocks();
   List<Flexible> listOfColorBlocks; 
+  // cblocks.generateColorBlocks(dataEntrys);
+
   // = cblocks.getListOfColorBlocks();
+
+  /*void generateDataEntrys(int nrOfDataEntrys) {
+    setState(() {
+      cblocks.generateColorBlocks(nrOfDataEntrys);
+    });
+  }*/
 
   @override
   Widget build(BuildContext context) {
-    print("bygger DataEntryContainerTestState ");
+    int nrD = getNrofDataEntrys();
+    cblocks.generateColorBlocks(nrD);
+    
+    print("bygger RainbowContainerState ");
     // Might wanna change the 1,5 to an higher number, but less than two, so that buttons for sorting fit
     double heightMediaQ = MediaQuery.of(context).size.height/1.5;
     listOfColorBlocks = cblocks.getListOfColorBlocks();
@@ -35,4 +54,5 @@ class _DataEntryContainerTestState extends State<DataEntryContainerTest> {
       ),
     );
   }
+
 }
