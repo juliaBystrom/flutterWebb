@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './dataEntryBar.dart';
 import './rainbowContainer.dart';
-import './colorBlocks.dart';
+import './colorBlocks/colorBlocks.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -15,19 +15,19 @@ class HomeState extends State<Home> {
 
   // final RainbowContainer dataWindow = new RainbowContainer();
 
-  final ColorBlocks cblocks = new ColorBlocks();
+  final ColorBlocks colorBlocksHandler = new ColorBlocks();
 
 
 
   void setNrData(int input) {
     setState(() {
-      cblocks.generateColorBlocks(input);
+      colorBlocksHandler.generateColorBlocks(input);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // cblocks.generateColorBlocks(15);
+    // colorBlocksHandler.generateColorBlocks(15);
 
     Size size = MediaQuery.of(context).size;
 
@@ -47,7 +47,7 @@ class HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DataEntryBar(setNrData),
-                RainbowContainer(cblocks),
+                RainbowContainer(colorBlocksHandler),
               ])),
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './rainbowContainer.dart';
 
 class DataEntryBar extends StatefulWidget {
   Function buttonFunction;
@@ -14,7 +13,6 @@ class _DataEntryBarState extends State<DataEntryBar> {
   Function buttonFunction;
 
   double _valueSlider = 10;
-  // DataEntryContainerTest dataEntryWindow;
   _DataEntryBarState(this.buttonFunction);
 
   Widget dataEntrySlider() {
@@ -58,8 +56,7 @@ class _DataEntryBarState extends State<DataEntryBar> {
           RaisedButton(
             onPressed: () {
               buttonFunction(_valueSlider);
-              // dataEntryWindow.generateDataEntrys(_valueSlider);
-              //generateRainbowMess(_valueSlider);
+              
             },
             child: Text("Create Rainbow Mess"),
           )

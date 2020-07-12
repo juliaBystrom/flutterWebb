@@ -1,9 +1,10 @@
 // import './colorBlockStateless.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'block.dart';
 
 class ColorBlocks {
-  List<Flexible> colorBlocks;
+  List<Block> colorBlocks;
   int nrOfBlocks;
   Random rnd = new Random();
   int input;
@@ -14,13 +15,35 @@ class ColorBlocks {
     generateColorBlocks(10);
   }
 
-  void updateInput(int inputedNr){
-    input = inputedNr;
+  List<Block> getListOfColorBlocks() {
+    print("nrOfBlocks: " + nrOfBlocks.toString());
+    return colorBlocks;
   }
 
+  
+  void sortColorBlocks(){
+    // Insertion sort
+    int lengthOfCB = colorBlocks.length;
+
+    int indexSelected;
+    Block blockSelected;
+
+    for(int i = 1; i < lengthOfCB; i++){
+      blockSelected = colorBlocks[i];
+      indexSelected = i;
+      while(indexSelected > 0 && (colorBlocks[indexSelected-1].getColorint() > blockSelected.getColorint())){
+        colorBlocks[indexSelected] = colorBlocks[indexSelected-1];
+        indexSelected--;
+      }
+
+      colorBlocks[indexSelected] = blockSelected;
+    }
+    print("Sorted an insertion sort");
+  }
+
+
   void generateColorBlocks(int nrOfBlocks) {
-    // colorBlocks = new List(nrOfBlocks);
-    List<Flexible> cB = new List(nrOfBlocks);
+    List<Block> cB = new List(nrOfBlocks);
 
     for (int i = 0; i < nrOfBlocks; i++) {
       // This double will be used to specefie the colour of the block
@@ -30,19 +53,7 @@ class ColorBlocks {
       // heightF will be 0,3 + number ranging from 0,0 to 0,5 depending on color.
       double heightF = (0.3 + (1 / 600) * color);
       print("heigh F is: " + heightF.toString());
-      // double heightF = (0.3 + (120/color))*(size.height/20);
-      // cB[i] = new ColorBlock(heightF,color);
-      cB[i] = new Flexible(
-        flex: 1,
-        fit: FlexFit.tight,
-        child: FractionallySizedBox(
-          heightFactor: heightF,
-          child: Container(
-            // height: heightF * 200,
-            color: HSVColor.fromAHSV(1.0, color, 1.0, 0.9).toColor(),
-          ),
-        ),
-      );
+      cB[i] = new Block(heightF,color);
     }
 
     colorBlocks = cB;
@@ -50,8 +61,5 @@ class ColorBlocks {
 
 
 
-  List<Flexible> getListOfColorBlocks() {
-    print("nrOfBlocks: " + nrOfBlocks.toString());
-    return colorBlocks;
-  }
+  
 }
