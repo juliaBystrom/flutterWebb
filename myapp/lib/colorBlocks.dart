@@ -6,11 +6,16 @@ class ColorBlocks {
   List<Flexible> colorBlocks;
   int nrOfBlocks;
   Random rnd = new Random();
+  int input;
 
   ColorBlocks() {
     // Starting with 10 color blocks
     nrOfBlocks = 10;
     generateColorBlocks(10);
+  }
+
+  void updateInput(int inputedNr){
+    input = inputedNr;
   }
 
   void generateColorBlocks(int nrOfBlocks) {
@@ -34,7 +39,7 @@ class ColorBlocks {
           heightFactor: heightF,
           child: Container(
             // height: heightF * 200,
-            color: HSVColor.fromAHSV(1.0, color, 1.0, 0.5).toColor(),
+            color: HSVColor.fromAHSV(1.0, color, 1.0, 0.9).toColor(),
           ),
         ),
       );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './dataEntryBar.dart';
 import './rainbowContainer.dart';
+import './colorBlocks.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -13,20 +14,21 @@ class HomeState extends State<Home> {
   static const String _title = "Rainbow Sorter";
 
   // final RainbowContainer dataWindow = new RainbowContainer();
-  int nr = 15;
 
-  int getNrData() {
-    return nr;
-  }
+  final ColorBlocks cblocks = new ColorBlocks();
+
+
 
   void setNrData(int input) {
     setState(() {
-      nr = input;
+      cblocks.generateColorBlocks(input);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    // cblocks.generateColorBlocks(15);
+
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -45,7 +47,7 @@ class HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DataEntryBar(setNrData),
-                RainbowContainer(getNrData),
+                RainbowContainer(cblocks),
               ])),
     );
   }

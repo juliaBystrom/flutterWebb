@@ -4,26 +4,26 @@ import './colorBlocks.dart';
 class RainbowContainer extends StatefulWidget {
   // int dataEntrys;
   // RainbowContainer(this.dataEntrys);
-  Function getNrofDataEntrys;
-  RainbowContainer(this.getNrofDataEntrys);
+  ColorBlocks colorBlocksHandler;
+  RainbowContainer(this.colorBlocksHandler);
 
   @override
   RainbowContainerState createState() {
-    return RainbowContainerState(getNrofDataEntrys);
+    return RainbowContainerState(colorBlocksHandler);
   }
 
 }
 
 class RainbowContainerState extends State<RainbowContainer> {
-  Function getNrofDataEntrys;
-  RainbowContainerState(this.getNrofDataEntrys);
-  ColorBlocks cblocks = new ColorBlocks();
+  ColorBlocks colorBlocksHandler;
+  RainbowContainerState(this.colorBlocksHandler);
+  // ColorBlocks cblocks = new ColorBlocks();
   List<Flexible> listOfColorBlocks; 
   // cblocks.generateColorBlocks(dataEntrys);
 
   // = cblocks.getListOfColorBlocks();
 
-  /*void generateDataEntrys(int nrOfDataEntrys) {
+  /*void updateWidget() {
     setState(() {
       cblocks.generateColorBlocks(nrOfDataEntrys);
     });
@@ -31,13 +31,13 @@ class RainbowContainerState extends State<RainbowContainer> {
 
   @override
   Widget build(BuildContext context) {
-    int nrD = getNrofDataEntrys();
-    cblocks.generateColorBlocks(nrD);
+    // int nrD = getNrofDataEntrys();
+    // cblocks.generateColorBlocks(nrD);
     
     print("bygger RainbowContainerState ");
     // Might wanna change the 1,5 to an higher number, but less than two, so that buttons for sorting fit
     double heightMediaQ = MediaQuery.of(context).size.height/1.5;
-    listOfColorBlocks = cblocks.getListOfColorBlocks();
+    listOfColorBlocks = colorBlocksHandler.getListOfColorBlocks();
 
     return Container(
       height: heightMediaQ,
