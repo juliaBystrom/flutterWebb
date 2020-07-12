@@ -69,51 +69,26 @@ class ColorBlocks {
   }
 
   int sortColorBlocksSwapBySwap(int index, int i) {
-    if (i > nrOfBlocks) {
-      // The list is now fully sorted
-      return 2;
-    }
-    
-    if (index == 0) {
-      colorBlocks[index] = blockSelectedSbS;
-      if (i + 1 < nrOfBlocks) {
-        blockSelectedSbS = colorBlocks[i + 1];
-      }
-      return 1;
-    } else if (colorBlocks[index - 1].getColorint() <=
-        blockSelectedSbS.getColorint()) {
-      colorBlocks[index] = blockSelectedSbS;
-      if (i + 1 < nrOfBlocks) {
-        blockSelectedSbS = colorBlocks[i + 1];
-      }
-      return 1;
-    } else if (index < 0) {
-      // Error!
-      print("Error index less than 0 in colorBlocks sort swap by swap");
-      return 2;
-    } else {
-      print("if statement excecuted with VL and HL: ");
-      print(colorBlocks[index - 1].getColorint().toString());
-      print(blockSelectedSbS.getColorint().toString());
+
+    if(i <= nrOfBlocks){
+    if (index > 0 &&
+        colorBlocks[index - 1].getColorint() > blockSelectedSbS.getColorint()) {
       colorBlocks[index] = colorBlocks[index - 1];
       return 0;
-    }
-
-    // blockSelected = colorBlocksCopy[i];
-
-    /* print("Should return 1");
-      // Now the subarray 0:i is sorted, and i need to be increased.
-
+    } else {
       // Insert the block in the avalible spot.
       colorBlocks[index] = blockSelectedSbS;
       if (i + 1 < nrOfBlocks) {
         blockSelectedSbS = colorBlocks[i + 1];
-        return 1;
-      } else {
-        // Return 2 could be implemented here instead of down below
-        print("time for return 2 hm");
-        return 1;
-      } */
+      }
+      // Now the subarray 0:i is sorted, and i need to be increased which are signald by returnign 1
+      return 1;
+    }
+    }else{
+      // The list is now fully sorted
+      return 2;
+    }
+
   }
 
   void generateColorBlocks(int amount) {
