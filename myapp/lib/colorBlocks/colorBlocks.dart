@@ -1,4 +1,3 @@
-// import './colorBlockStateless.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'block.dart';
@@ -7,7 +6,6 @@ class ColorBlocks {
   List<Block> colorBlocks;
   int nrOfBlocks;
   Random rnd = new Random();
-  int input;
 
   ColorBlocks() {
     // Starting with 10 color blocks
@@ -20,10 +18,14 @@ class ColorBlocks {
     return colorBlocks;
   }
 
-  
+  // Unsorted -> Sorted 
+  // No subarrays displayed.
   void sortColorBlocks(){
     // Insertion sort
+
+    // Will be null when compiling causing warning, could be fixed by initilizing a length for the array.
     int lengthOfCB = colorBlocks.length;
+
 
     int indexSelected;
     Block blockSelected;
@@ -41,11 +43,33 @@ class ColorBlocks {
     print("Sorted an insertion sort");
   }
 
+  // Insertion sort but one step. Will return 1 when finnish, 0 when unfinnish.
+  int sortColorBlocksStepByStep(int i){
+    // Insertion sort 1 block sorted
+    Block blockSelected;
+    if(i < nrOfBlocks){
+      int indexSelected = i;
+      blockSelected = colorBlocks[indexSelected];
+      while(indexSelected > 0 && (colorBlocks[indexSelected-1].getColorint() > blockSelected.getColorint())){
+        colorBlocks[indexSelected] = colorBlocks[indexSelected-1];
+        indexSelected--;
+        // Swap of elements finnish
+      }
+      colorBlocks[indexSelected] = blockSelected;
+      // Subbaray 0:i now sorted 
+      return 0;
+    }else{
+      // The list is now fully sorted
+      return 1;
+    }
+  }
 
-  void generateColorBlocks(int nrOfBlocks) {
-    List<Block> cB = new List(nrOfBlocks);
 
-    for (int i = 0; i < nrOfBlocks; i++) {
+  void generateColorBlocks(int amount) {
+    List<Block> cB = new List(amount);
+    nrOfBlocks = amount;
+
+    for (int i = 0; i < amount; i++) {
       // This double will be used to specefie the colour of the block
       // in a HSV format where the number will represent the hue which will range from 0 that is red and to 300 that is purple.
       // red blocks will be given a smaler height than purple ones.

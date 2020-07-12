@@ -26,6 +26,14 @@ class RainbowContainerState extends State<RainbowContainer> {
     });
   }
 
+  int sortRainbowStepByStep(int i) {
+    int flag;
+    setState(() {
+      flag = colorBlocksHandler.sortColorBlocksStepByStep(i);
+    });
+    return flag;
+  }
+
   @override
   Widget build(BuildContext context) {
     print("bygger RainbowContainerState ");
@@ -49,7 +57,7 @@ class RainbowContainerState extends State<RainbowContainer> {
             ),
           ),
         ),
-        SorterButtonContainer(sortRainbow),
+        SorterButtonContainer(sortRainbow, sortRainbowStepByStep),
       ],
     );
   }
