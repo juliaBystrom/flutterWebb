@@ -33,6 +33,13 @@ class RainbowContainerState extends State<RainbowContainer> {
     });
     return flag;
   }
+  int sortRainbowSwapBySwap(int index, int i) {
+    int flag;
+    setState(() {
+      flag = colorBlocksHandler.sortColorBlocksSwapBySwap(index, i);
+    });
+    return flag;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +64,7 @@ class RainbowContainerState extends State<RainbowContainer> {
             ),
           ),
         ),
-        SorterButtonContainer(sortRainbow, sortRainbowStepByStep),
+        SorterButtonContainer(sortRainbow, sortRainbowStepByStep, sortRainbowSwapBySwap),
       ],
     );
   }

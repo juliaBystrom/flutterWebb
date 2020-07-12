@@ -4,7 +4,8 @@ import 'dart:async';
 class SorterButtonContainer extends StatelessWidget {
   Function insertionSort;
   Function insertionSortOneStep;
-  SorterButtonContainer(this.insertionSort, this.insertionSortOneStep);
+  Function insertionSortOneSwap;
+  SorterButtonContainer(this.insertionSort, this.insertionSortOneStep, this.insertionSortOneSwap);
 
    
 
@@ -46,6 +47,33 @@ class SorterButtonContainer extends StatelessWidget {
                 color: Colors.deepPurple,
               ),
               Text("Sort Step by Step"),
+            ],
+          ),
+        ),
+        RaisedButton(
+          onPressed: () async {
+            int flag = 0;
+            int i = 1;
+            int index = 1;
+            while (flag != 2) {
+              await Future.delayed(Duration(microseconds: 2));
+              flag = insertionSortOneSwap(index, i);
+              print("insertionSortOneSwap with i: " + i.toString() + " index: " + index.toString() + " gave flag: " + flag.toString());
+              index--;
+              if(flag == 1){
+                i++;
+                index = i;
+              }
+            }
+            print("Swap sort finnish");
+          },
+          child: Row(
+            children: [
+              Icon(
+                Icons.sort,
+                color: Colors.deepPurple,
+              ),
+              Text("Sort Swap by Swap"),
             ],
           ),
         ),
