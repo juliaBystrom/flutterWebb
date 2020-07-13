@@ -53,7 +53,7 @@ class RainbowContainerState extends State<RainbowContainer> {
         Container(
           height: heightMediaQ,
           decoration:
-              BoxDecoration(border: Border.all(color: Colors.green, width: 5)),
+              BoxDecoration(border: Border.all(color: Colors.deepPurple, width: 5)),
           child: Container(
             // fit: BoxFit.fill,
             width: MediaQuery.of(context).size.width,

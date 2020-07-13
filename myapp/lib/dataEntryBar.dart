@@ -19,7 +19,7 @@ class _DataEntryBarState extends State<DataEntryBar> {
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
         activeTrackColor: Colors.deepPurple[700],
-        inactiveTrackColor: Colors.deepPurple[100],
+        inactiveTrackColor: Colors.deepPurple[50],
         trackHeight: 4.0,
         // TO DO implement own SliderComponentShape
         thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
@@ -49,17 +49,69 @@ class _DataEntryBarState extends State<DataEntryBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
+      margin: EdgeInsets.all(10),
+      child: Wrap(
+        alignment: WrapAlignment.start,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: 10,
         children: [
-          Text("Data Entrys:"),
-          dataEntrySlider(),
+          Text(
+            "Colorblocks:",
+            textScaleFactor: 1.5,
+            style: TextStyle(
+              color: Colors.deepPurple,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+          Container(
+            decoration: ShapeDecoration(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              color: Colors.deepPurple[100],
+            ),
+            padding: EdgeInsets.all(10),
+            /* margin: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              bottom: 10,
+            ), */
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                dataEntrySlider(),
+                Text(
+                  "$_valueSlider",
+                  textScaleFactor: 1.5,
+                  style: TextStyle(
+                    color: Colors.deepPurple,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.bold,
+                    backgroundColor: Colors.deepPurple[50],
+                  ),
+                ),
+              ],
+            ),
+          ),
           RaisedButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            color: Colors.deepPurple[500],
+            padding: EdgeInsets.all(10),
             onPressed: () {
               buttonFunction(_valueSlider);
-              
             },
-            child: Text("Create Rainbow Mess"),
-          )
+            child: Text(
+              "Create Rainbow Mess",
+              textScaleFactor: 1.5,
+              style: TextStyle(
+                color: Colors.deepPurple[50],
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ],
       ),
     );
