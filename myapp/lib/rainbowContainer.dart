@@ -45,7 +45,7 @@ class RainbowContainerState extends State<RainbowContainer> {
   Widget build(BuildContext context) {
     print("bygger RainbowContainerState ");
     // Might wanna change the 1,5 to an higher number, but less than two, so that buttons for sorting fit
-    double heightMediaQ = MediaQuery.of(context).size.height / 1.5;
+    double heightMediaQ = MediaQuery.of(context).size.height / 1.75;
     listOfColorBlocks = colorBlocksHandler.getListOfColorBlocks();
 
     return Column(

@@ -100,7 +100,7 @@ class _DataEntryBarState extends State<DataEntryBar> {
             color: Colors.deepPurple[500],
             padding: EdgeInsets.all(10),
             onPressed: () {
-              buttonFunction(_valueSlider);
+              buttonFunction(_valueSlider.toInt());
             },
             child: Text(
               "Create Rainbow Mess",
