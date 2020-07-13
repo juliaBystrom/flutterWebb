@@ -18,6 +18,7 @@ class SorterButtonContainer extends StatelessWidget {
           onPressed: () {
             insertionSort();
           },
+          shape: CircleBorder(side: BorderSide(width: 30)),
           child: Row(
             children: [
               Icon(
